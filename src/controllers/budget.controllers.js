@@ -50,46 +50,48 @@ const getBudget = async (req, res) => {
   }
 };
 
-// const updateBudget = async (req, res) => {
-//     const selectedtitle = req.params.title;
-//     const {title, quantity, price} = req.body;
-//     try{
-//         let updatedBudget;
-//         if(title){
-//             updatedBudget = await client.budget.update({
-//                 where: {
-//                     title: selectedtitle
-//                 },
-//                 data: {
-//                     title: title
-//                 }
-//             })
-//         }
-//         if(quantity){
-//             updatedBudget = await client.budget.update({
-//                 where: {
-//                     title: selectedtitle
-//                 },
-//                 data: {
-//                     quantity: quantity
-//                 }
-//             })
-//         }
-//         if(price){
-//             updatedBudget = await client.budget.update({
-//                 where: {
-//                     title: selectedtitle
-//                 },
-//                 data: {
-//                     price: price
-//                 }
-//             })
-//         }
-//         res.status(200).json({message: "Budget updated successfully", data: updatedBudget});
-//     }catch(e){
-//         res.status(500).json({message: "Server Error"});
-//     }
-// }
+const updateBudget = async (req, res) => {
+  const selectedtitle = req.params.title;
+  const { title, quantity, price } = req.body;
+  try {
+    let updatedBudget;
+    if (title) {
+      updatedBudget = await client.budget.update({
+        where: {
+          title: selectedtitle,
+        },
+        data: {
+          title: title,
+        },
+      });
+    }
+    if (quantity) {
+      updatedBudget = await client.budget.update({
+        where: {
+          title: selectedtitle,
+        },
+        data: {
+          quantity: quantity,
+        },
+      });
+    }
+    if (price) {
+      updatedBudget = await client.budget.update({
+        where: {
+          title: selectedtitle,
+        },
+        data: {
+          price: price,
+        },
+      });
+    }
+    res
+      .status(200)
+      .json({ message: "Budget updated successfully", data: updatedBudget });
+  } catch (e) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
 // const deleteBudget = async (req, res) => {
 //     const title = req.params.title;
