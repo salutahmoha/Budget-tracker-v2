@@ -93,18 +93,18 @@ const updateBudget = async (req, res) => {
   }
 };
 
-// const deleteBudget = async (req, res) => {
-//     const title = req.params.title;
-//     try{
-//         await client.budget.delete({
-//             where: {
-//                 title: title
-//             }
-//         })
-//         res.status(200).json({message: "Budget deleted successfully"});
-//     }catch(e){
-//         res.status(500).json({message: "Server Error"});
-//     }
-// }
+const deleteBudget = async (req, res) => {
+  const title = req.params.title;
+  try {
+    await client.budget.delete({
+      where: {
+        title: title,
+      },
+    });
+    res.status(200).json({ message: "Budget deleted successfully" });
+  } catch (e) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
-// export {createBudget, getAllBudgets, getBudget, updateBudget, deleteBudget}
+export { createBudget, getAllBudgets, getBudget, updateBudget, deleteBudget };
