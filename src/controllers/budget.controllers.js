@@ -19,18 +19,18 @@ const createBudget = async (req, res) => {
   }
 };
 
-//  const getAllBudgets = async (req, res) => {
-//     try{
-//         const allbudgets = await client.budget.findMany();
-//         if(allbudgets.length <= 0){
-//             res.status(200).json({message: "You don't have any budgets yet"});
-//         }else{
-//             res.status(200).json({data: "All budgets", data: allbudgets});
-//         }
-//     }catch(e){
-//         res.status(500).json({message: "Server Error"});
-//     }
-// }
+const getAllBudgets = async (req, res) => {
+  try {
+    const allbudgets = await client.budget.findMany();
+    if (allbudgets.length <= 0) {
+      res.status(200).json({ message: "You don't have any budgets yet" });
+    } else {
+      res.status(200).json({ data: "All budgets", data: allbudgets });
+    }
+  } catch (e) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
 // const getBudget = async (req, res) => {
 //     const title = req.params.title;
