@@ -32,23 +32,23 @@ const getAllBudgets = async (req, res) => {
   }
 };
 
-// const getBudget = async (req, res) => {
-//     const title = req.params.title;
-//     try{
-//         const budget = await client.budget.findFirst({
-//             where: {
-//                 title
-//             }
-//         })
-//         if(!budget){
-//             res.status(404).json({message: "Budget with title ${title} not found"});
-//         }else{
-//             res.status(200).json({ data: budget});
-//         }
-//     }catch(e){
-//         res.status(500).json({message: "Server Error"});
-//     }
-// }
+const getBudget = async (req, res) => {
+  const title = req.params.title;
+  try {
+    const budget = await client.budget.findFirst({
+      where: {
+        title,
+      },
+    });
+    if (!budget) {
+      res.status(404).json({ message: "Budget with title ${title} not found" });
+    } else {
+      res.status(200).json({ data: budget });
+    }
+  } catch (e) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
 // const updateBudget = async (req, res) => {
 //     const selectedtitle = req.params.title;
