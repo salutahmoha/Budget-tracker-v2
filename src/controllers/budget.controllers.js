@@ -1,21 +1,23 @@
-// import {PrismaClient} from '@prisma/client';
-// const client = new PrismaClient();
+import { PrismaClient } from "@prisma/client";
+const client = new PrismaClient();
 
-// const createBudget = async(req, res) => {
-//     try{
-//      const {title, quantity, price} = req.body;
-//      const newBudget = await client.budget.create({
-//          data: {
-//              title,
-//              quantity,
-//              price
-//          }
-//      })
-//      res.status(201).json({message: "Budget created successfully", data: newBudget});
-//     }catch(e){
-//      res.status(500).json({message: "Server Error"});
-//     }
-//  }
+const createBudget = async (req, res) => {
+  try {
+    const { title, quantity, price } = req.body;
+    const newBudget = await client.budget.create({
+      data: {
+        title,
+        quantity,
+        price,
+      },
+    });
+    res
+      .status(201)
+      .json({ message: "Budget created successfully", data: newBudget });
+  } catch (e) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
 //  const getAllBudgets = async (req, res) => {
 //     try{
